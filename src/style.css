@@ -23,7 +23,8 @@ body, html{
     --gray02--: #282727;
     --white01--: #f2f2f2;
     --white02--: #f2f2f2;
-    --blue01--: #0047f9;
+    --white03--: #cacaca;
+    --blue01--: #0089f9;
     --blue02--: #0074f9;
 }
 
@@ -33,7 +34,8 @@ body, html{
     --gray02--: #141414;
     --white01--: #000;
     --white02--: #1f1f1f;
-    --blue01--: #0047f9;
+    --white03--: #1f1f1f;
+    --blue02--: #00b2f9;
 }
 
 .principalHeader{
@@ -234,58 +236,67 @@ body, html{
                 font-size: 2rem;
                 margin: 0.2rem 2rem;
             }
-            .scrollProjects{
-                overflow-x: auto;
+
+            .projectsContainer{
+                background-color: var(--white03--);
+                padding: 1rem;
+                margin-bottom: 1rem;
+                border-radius: 1.6rem;
+                box-shadow: 0 0 2px 1px #0000007a;
+
+                .scrollProjects{
+                overflow-x: scroll;
                 overflow-y: hidden;
                 white-space: nowrap;
                 border-radius: .8rem;
-                padding: .5rem 0;
+                padding: .5rem 0.3rem;
                 width: 100%;
 
-                .cardProject:last-child{
-                    margin-right: 0;
-                }
-
-                .cardProject{
-                    width: 26rem;
-                    height: 18rem;
-                    background-color: var(--white02--);
-                    display: inline-block;
-                    border-radius: .8rem;
-                    border: 1px solid var(--gray02--);
-                    overflow: hidden;
-                    cursor: pointer;
-                    margin-right: 0.5rem;
-
-                    animation-name: appear ;
-                    animation-duration: 0.5s;
-                    animation-timing-function: linear;
-                    animation-fill-mode: backwards;
-
-                    img{
-                        width: 100%;
-                        background-color: blue;
-                        height: 14rem;
+                    .cardProject:last-child{
+                        margin-right: 0;
                     }
 
-                    h3{
-                        margin-left: 0.5rem;
-                        font-size: 1.4rem;
-                        display: flex;
-                        align-items: center;
-                        
-                        span{
-                            background-color: var(--blue01--);
-                            width: .5rem;
-                            height: .5rem;
-                            border-radius: 50%;
-                            margin-right: 0.2rem;
+                    .cardProject{
+                        width: 26rem;
+                        height: 18rem;
+                        background-color: var(--white02--);
+                        display: inline-block;
+                        border-radius: .8rem;
+                        border: 1px solid var(--gray02--);
+                        overflow: hidden;
+                        cursor: pointer;
+                        margin-right: 0.5rem;
+
+                        animation-name: appear ;
+                        animation-duration: 0.5s;
+                        animation-timing-function: linear;
+                        animation-fill-mode: backwards;
+
+                        img{
+                            width: 100%;
+                            height: 14rem;
+                        }
+
+                        h3{
+                            margin-left: 0.5rem;
+                            font-size: 1.4rem;
+                            display: flex;
+                            align-items: center;
+                            
+                            span{
+                                background-color: var(--blue01--);
+                                width: .5rem;
+                                height: .5rem;
+                                border-radius: 50%;
+                                margin-right: 0.2rem;
+                            }
                         }
                     }
-                }
 
-                .cardProject:hover{
-                    transform: scale(1.02);
+                    .cardProject:hover{
+                        transform: scale(1.02);
+                        background-color: var(--gray01--);
+                    }
                 }
             }
         }
@@ -322,7 +333,7 @@ body, html{
     align-items: center;
     background-color: #00000050;
 
-    animation-name: appear ;
+    animation-name: appearV2 ;
     animation-duration: 0.5s;
     animation-timing-function: linear;
     animation-fill-mode:both;
@@ -349,7 +360,7 @@ body, html{
         }
 
         img{
-            box-shadow: 0 0 5px 1px #000; 
+            box-shadow: 0 0 5px 1px #00000081; 
             border-radius: .8rem;
         }
 
@@ -403,8 +414,6 @@ body, html{
         }
     }
 }
-
-
 
 /* Melhorando o visual do Scroll */
 ::-webkit-scrollbar{
@@ -471,5 +480,14 @@ body, html{
     100%{
         opacity: 0;
         transform: translateY(-2rem);
+    }
+}
+
+@keyframes appearV2 {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 100%;
     }
 }

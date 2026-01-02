@@ -1,4 +1,4 @@
-import {dataCards} from "./dataCards.js"
+import {myProjectsContainerArray, technicalProjects} from "./dataCards.js"
 "use strict"
 
 // toggleTheme
@@ -17,34 +17,38 @@ btnToggleMode.addEventListener("click", ()=> {
     }
 })
 
-// dataCards
 document.addEventListener("DOMContentLoaded", ()=>{
-    loadDataCards()
+    loadDataCards(myProjectsContainer, myProjectsContainerArray)
 })
 
-const scrollCards = document.querySelector(".scrollProjects")
-function loadDataCards (){
+// dataCards
+function loadDataCards (destiny, fileArray){
     let cardDelay = 0.2
-    for(let indexCard = 0; indexCard<dataCards.length; indexCard++){
+    for(let indexCard = 0; indexCard<fileArray.length; indexCard++){
         const newCard = `
-            <div class="cardProject" style="animation-delay: ${cardDelay}s" id="${dataCards[indexCard].cardId}">
-                <img src="${dataCards[indexCard].imgUrl}" alt="${dataCards[indexCard].imgAlt}">
-                <h3><span></span>${dataCards[indexCard].title}</h3>
+            <div class="cardProject" style="animation-delay: ${cardDelay}s" id="${fileArray[indexCard].cardId}">
+                <img src="${fileArray[indexCard].imgUrl}" alt="${fileArray[indexCard].imgAlt}">
+                <h3><span></span>${fileArray[indexCard].title}</h3>
             </div>
         `
-        scrollCards.innerHTML = scrollCards.innerHTML + newCard
+        destiny.innerHTML = destiny.innerHTML + newCard
         cardDelay += 0.3
     }
 }
 
-scrollCards.addEventListener("click", (event)=>{
+// dataCards
+const myProjectsContainer = document.querySelector("#myProjectsContainer")
+
+loadDataCards(myProjectsContainer, myProjectsContainerArray)
+
+myProjectsContainer.addEventListener("click", (event)=>{
     event.preventDefault()
     const target = event.target
     const targetId = target.closest("div").id
-    expandCard(targetId)
+    expandCard(targetId, myProjectsContainerArray)
 })
 
-function expandCard(targetId){
+function expandCard(targetId, fileArray){
     const indexCard = targetId
     
     const bodyCardExpanded = document.createElement("div")
@@ -54,24 +58,24 @@ function expandCard(targetId){
     cardDiv.setAttribute("class","cardExpanded")
 
     const cardTitle = document.createElement("h3")
-    cardTitle.textContent = dataCards[indexCard].title
+    cardTitle.textContent = fileArray[indexCard].title
 
     const cardImg = document.createElement("img")
-    cardImg.setAttribute("src", dataCards[indexCard].imgUrl)
-    cardImg.setAttribute("alt", dataCards[indexCard].imgAlt)
+    cardImg.setAttribute("src", fileArray[indexCard].imgUrl)
+    cardImg.setAttribute("alt", fileArray[indexCard].imgAlt)
 
     const cardDescription = document.createElement(`p`)
-    cardDescription.textContent = dataCards[indexCard].description
+    cardDescription.textContent = fileArray[indexCard].description
 
     const cardClose = document.createElement("i")
     cardClose.setAttribute("class", "fa-solid fa-x")
 
     const cardtechnologies = document.createElement("div")
     cardtechnologies.setAttribute("class", "cardTechnologies")
-    for(let indexTechnologies = 0; indexTechnologies<dataCards[indexCard].technologies.length; indexTechnologies++){
+    for(let indexTechnologies = 0; indexTechnologies<fileArray[indexCard].technologies.length; indexTechnologies++){
         const technolgyUsed = document.createElement("p")
-        technolgyUsed.textContent = dataCards[indexCard].technologies[indexTechnologies]
-        technolgyUsed.setAttribute("class",`${dataCards[indexCard].technologies[indexTechnologies]}Class`)
+        technolgyUsed.textContent = fileArray[indexCard].technologies[indexTechnologies]
+        technolgyUsed.setAttribute("class",`${fileArray[indexCard].technologies[indexTechnologies]}Class`)
         cardtechnologies.append(technolgyUsed)
     }
 
@@ -102,8 +106,8 @@ function expandCard(targetId){
 function changeToProjectsSection(){
     document.querySelector(".contentScroll").style.marginLeft = "-1024px"
     document.querySelector(".scrollProjects").innerHTML = ""
+    loadDataCards(myProjectsContainer, myProjectsContainerArray)
     document.querySelector("#headerRadio02").checked = true
-    loadDataCards()
 }
 
 const seeMyProjectsBtn = document.querySelector(".seeMyProjectsBtn")

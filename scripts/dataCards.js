@@ -1,4 +1,4 @@
-const dataCards = [
+const myProjectsContainerArray = [
     {
         cardId: "0",
         title: "Organizador de Despesas",
@@ -57,4 +57,19 @@ const dataCards = [
     }
 ]
 
-export {dataCards}
+const technicalProjects = [
+    {
+        cardId: "0",
+        title: "CypherX",
+        imgsUrl: {
+            // imagens dos cálculos, slides, tudo relacionado ao projeto que sejá relevante
+        },
+        imgsAlt: {
+
+        },
+        description: "Atuei como líder do projeto de criação de uma empresa com o tema 'Tecnologia' que seguimos com serviços com foco principalmente em cybersegurança, mas, também abordando desde a área logística e de marketing até a operacional e gestão interna e externa da empresa",
+        technologies: ["Excel", "Word", "Canva", "Html", "Css", "JavaScript"]
+    }
+]
+
+export {myProjectsContainerArray, technicalProjects}
