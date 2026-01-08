@@ -138,5 +138,4 @@ const formations = [
         certificateLink: ""
     }
 ]
-
-export {myProjectsContainerArray, technicalProjects}
+export {myProjectsContainerArray, technicalProjects, formations}

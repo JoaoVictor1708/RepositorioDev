@@ -5,6 +5,11 @@
                 .guideSections{
                     display: flex;
                     gap: 2.2rem;
+                    .contactsDiv{
+                        left: -100%;
+                        min-width: 0;
+                        justify-content: center;
+                    }
                 }
             }
         }
@@ -22,6 +27,7 @@
             }
         }
     }
+    
 }
 
 @media (width < 800px) {
@@ -50,8 +56,6 @@
                 font-weight: 600;
                 padding: 1rem;
 
-                
-
                 span{
                     transition: 0.3s;
                 }
@@ -63,6 +67,17 @@
                         padding: 0.5rem;
                         text-align: center;
                         width: 11rem;
+                    }
+                    .contactsDiv.divActived{
+                        transform: translate(0, 0.6rem);
+                        gap: 0.6rem;
+                        padding: 0.8rem;
+                    }
+                    .contactsDiv{
+                        position: fixed;
+                        margin: 0 auto;
+                        left: 20rem;
+                        right: 20rem;
                     }
                 }
 
@@ -95,6 +110,21 @@
     }
 }
 
+@media (width <750px){
+    .principalHeader{
+        .headerContent{
+            .headerSections{
+                .guideSections{
+                    .contactsDiv{
+                        left: 18rem;
+                        right: 18rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
 @media (width < 700px) {
     .content{
         .apresentation{
@@ -107,6 +137,49 @@
             flex-direction: column-reverse;
             justify-content: center;
             gap: 2rem;
+        }
+    }
+    .principalHeader{
+        .headerContent{
+            .headerSections{
+                .guideSections{
+                    .contactsDiv{
+                        left: 16rem;
+                        right: 16rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (width <650px){
+    .principalHeader{
+        .headerContent{
+            .headerSections{
+                .guideSections{
+                    .contactsDiv{
+                        left: 14rem;
+                        right: 14rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (width <600px){
+    .principalHeader{
+        .headerContent{
+            .headerSections{
+                .guideSections{
+                    .contactsDiv{
+                        padding: 0.3rem;
+                        left: 11rem;
+                        right: 11rem;
+                    }
+                }
+            }
         }
     }
 }

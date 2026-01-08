@@ -1,4 +1,4 @@
-import {myProjectsContainerArray, technicalProjects} from "./dataCards.js"
+import {myProjectsContainerArray, technicalProjects, formations} from "./dataCards.js"
 "use strict"
 
 // toggleTheme
@@ -36,11 +36,32 @@ function loadDataCards (destiny, fileArray){
 // projectCards
 const myProjectsContainer = document.querySelector("#myProjectsContainer")
 const technicalProjectsContainer = document.querySelector("#technicalProjectsContainer")
+const formationsContainer = document.querySelector(".formationContainer")
 
 document.addEventListener("DOMContentLoaded", ()=>{
     loadDataCards(myProjectsContainer, myProjectsContainerArray)
     loadDataCards(technicalProjectsContainer, technicalProjects)
+    if(formationsContainer){
+        loadFormations()
+    }
 })
+
+// Carrega os dados de formações
+function loadFormations(){
+    formationsContainer.innerHTML = ''
+    for(const f of formations){
+        const capacitations = f.capacitations && f.capacitations.length ? `<p class="capacitations">${f.capacitations.join(' • ')}</p>` : ''
+        const card = `
+            <div class="formationCard">
+                <h3>${f.course}</h3>
+                <h4>${f.instituitionName} <span>${f.period}</span></h4>
+                ${capacitations}
+                <p class="formationDescription">${f.description}</p>
+            </div>
+        `
+        formationsContainer.innerHTML += card
+    }
+}
 
 myProjectsContainer.addEventListener("click", (event)=>{
     const target = event.target
@@ -351,3 +372,73 @@ scrollMenu.classList.add("divDesactived")
 scrollMenuBtn.addEventListener("click", ()=> appearDesappear(scrollMenu, "upToDown", "desappear"))
 
 //Contacts
+const contactsBtn = document.querySelector(".headerContacts")
+const contactsDiv = document.querySelector(".contactsDiv")
+contactsDiv.classList.add("divDesactived")
+contactsBtn.addEventListener("click", ()=> appearDesappear(contactsDiv, "upToDown", "desappear"))
+
+// WhatsApp card: show a small modal with the phone number (read from data-phone)
+const whatsappLink = contactsDiv.querySelector('a[data-phone]')
+if(whatsappLink){
+    whatsappLink.addEventListener('click', (e)=>{
+        e.preventDefault()
+        e.stopPropagation()
+        const phone = whatsappLink.dataset.phone || ''
+        showWhatsAppCard(phone)
+    })
+}
+
+function showWhatsAppCard(phone){
+    const overlay = document.createElement('div')
+    overlay.className = 'whatsappCardBody'
+    // start hidden via appearDesappear classes
+    overlay.classList.add('divDesactived')
+
+    const card = document.createElement('div')
+    card.className = 'whatsappCard'
+
+    const close = document.createElement('i')
+    close.className = 'fa-solid fa-x whatsappClose'
+    close.addEventListener('click', ()=>{
+        // animate close
+        appearDesappear(overlay, 'desappearV2', 'appearV2')
+        setTimeout(()=> overlay.remove(), 600)
+    })
+
+    const title = document.createElement('h3')
+    title.textContent = 'WhatsApp'
+
+    const number = document.createElement('p')
+    number.className = 'whatsappNumber'
+    number.textContent = phone
+
+    const copyBtn = document.createElement('button')
+    copyBtn.className = 'casualBtn'
+    copyBtn.textContent = 'Copiar'
+    copyBtn.addEventListener('click', ()=>{
+        if(navigator.clipboard && phone){
+            navigator.clipboard.writeText(phone).then(()=>{
+                copyBtn.textContent = 'Copiado'
+                setTimeout(()=> copyBtn.textContent = 'Copiar', 1500)
+            }).catch(()=>{})
+        }
+    })
+
+    card.appendChild(close)
+    card.appendChild(title)
+    card.appendChild(number)
+    card.appendChild(copyBtn)
+    overlay.appendChild(card)
+    document.body.appendChild(overlay)
+
+    // open with appearDesappear animation
+    // small timeout to ensure element is in DOM
+    setTimeout(()=> appearDesappear(overlay, 'desappearV2', 'appearV2'), 0)
+
+    overlay.addEventListener('click', (ev)=>{ 
+        if(ev.target === overlay){
+            appearDesappear(overlay, 'desappearV2', 'appearV2')
+            setTimeout(()=> overlay.remove(), 600)
+        }
+    })
+}
