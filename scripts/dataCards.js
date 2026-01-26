@@ -112,9 +112,9 @@ const formations = [
         instituitionName: "Prime Cursos",
         course: "Informática Avançada",
         workLoad: "",
-        period: "",
-        capacitations: [""],
-        description: "Capacitação no uso eficiente das princiapis ferramentas de informática, incluindo o Pacote Office e noções de internet, segurança de dados e produtividade digital.",
+        period: "2023",
+        capacitations: ["Pacote Office-Avançado", "Conhecimento de informática"],
+        description: "Capacitação no uso eficiente das principais ferramentas de informática, incluindo o Pacote Office e noções de internet, segurança de dados e produtividade digital.",
         certificateLink: ""
     },
     {
@@ -133,7 +133,7 @@ const formations = [
         course: "Inglês Intermediário",
         workLoad: "",
         period: "06/2024 à 11/2024",
-        capacitations: ["Inglês-Avançado"],
+        capacitations: ["Inglês-Intermediário"],
         description: "Formação de Inglês intermediário B1/B2",
         certificateLink: ""
     }

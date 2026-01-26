@@ -99,7 +99,7 @@ body, html{
                     text-align: center;
                 }
 
-                a span{
+                span{
                     width: 0;
                     height: 0.2rem;
                     background-color: var(--blue01--);
@@ -138,6 +138,7 @@ body, html{
                 /* Contatos */
                 #headerContactsP{
                     position: relative;
+                    font-size: 1.4rem;
                     cursor: pointer;
                 }
                 .contactsDiv{
@@ -385,6 +386,7 @@ body, html{
                     overflow: hidden;
                     cursor: pointer;
                     margin-right: 0.5rem;
+                    position: relative;
 
                     animation-name: appear ;
                     animation-duration: 0.5s;
@@ -407,10 +409,23 @@ body, html{
                             margin-right: 0.2rem;
                         }
                     }
+                    .cardPointer{
+                        position: absolute;
+                        bottom: 0.5rem;
+                        right: 0.5rem;
+                        font-size: 1.8rem;
+                        color: var(--blue01--);
+                        opacity: 0.7;
+                        transition: all 0.3s ease;
+                    }
                 }
                 .cardProject:hover{
                     transform: scale(1.02);
                     background-color: var(--gray01--);
+                }
+                .cardProject:hover .cardPointer{
+                    opacity: 1;
+                    transform: translate(0.3rem, -0.3rem);
                 }
             }
         }

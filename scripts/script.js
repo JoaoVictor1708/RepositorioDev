@@ -26,6 +26,7 @@ function loadDataCards (destiny, fileArray){
             <div class="cardProject" style="animation-delay: ${cardDelay}s" id="${fileArray}-${fileArray[indexCard].cardId}">
                 <img src="${firstImage.url}" alt="${firstImage.alt}">
                 <h3><span></span>${fileArray[indexCard].title}</h3>
+                <i class="fa-solid fa-arrow-pointer cardPointer"></i>
             </div>
         `
         destiny.innerHTML = destiny.innerHTML + newCard
@@ -340,7 +341,7 @@ const observer = new IntersectionObserver(
     });
   },
   {
-    threshold: 0.6
+    threshold: 0.5
   }
 );
 
