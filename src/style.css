@@ -608,6 +608,25 @@ body, html{
                 height: auto;
             }
 
+            .expandImageIcon{
+                position: absolute;
+                bottom: 1rem;
+                right: 1rem;
+                font-size: 1.8rem;
+                color: black;
+                background-color: rgba(255, 255, 255, 0.562);
+                padding: 0.8rem;
+                border-radius: 0;
+                transition: 0.3s;
+                border-radius: 8px;
+                text-align: center;
+
+                &:hover{
+                    background-color: rgba(255, 255, 255, 0.603);
+                    transform: scale(1.1);
+                }
+            }
+
             .carouselBtn{
                 position: absolute;
                 top: 50%;
@@ -720,7 +739,7 @@ body, html{
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(0, 0, 0, 0.5);
             color: white;
             border: none;
             border-radius: 50%;
@@ -735,7 +754,7 @@ body, html{
             z-index: 100;
 
             &:hover{
-                background-color: rgba(255, 255, 255, 0.4);
+                background-color: rgba(0, 0, 0, 0.8);
                 transform: translateY(-50%) scale(1.1);
             }
 

@@ -101,12 +101,17 @@ function expandCard(targetId, fileArray){
     cardImg.setAttribute("class", "carouselImage")
     cardImg.style.cursor = "pointer"
     
+    // Arrow pointer icon to indicate expandable image
+    const expandIcon = document.createElement("i")
+    expandIcon.setAttribute("class", "fa-solid fa-arrow-pointer expandImageIcon")
+    
     // Click image to open fullscreen carousel
     cardImg.addEventListener("click", ()=> {
         openFullscreenCarousel()
     })
     
     carouselContainer.append(cardImg)
+    carouselContainer.append(expandIcon)
 
     // Navigation Buttons (only if more than one image)
     let indicatorsContainer;
